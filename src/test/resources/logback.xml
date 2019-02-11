@@ -1,0 +1,22 @@
+<configuration debug="true" scan="true">
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{ISO8601} %-5level %logger{36} [%X{akkaSource}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="us.snapswap" additivity="false" level="debug">
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <logger name="org.apache.cassandra" additivity="false" level="error">
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <logger name="com.datastax.driver" additivity="false" level="error">
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref="stdout"/>
+    </root>
+</configuration>
